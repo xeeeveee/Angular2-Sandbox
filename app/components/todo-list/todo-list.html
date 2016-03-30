@@ -1,0 +1,8 @@
+Remaining todo : {{remaining}}
+<ul>
+    <li *ngFor="#todo of todos;#i=index">{{todo.text}}
+        <input type="checkbox" [checked]="todo.isDone" (change)="toggleTodo(todo)">
+        <button class="tiny alert button" (click)="removeTodo(i)">Remove</button>
+    </li>
+</ul>
+<todo-input (newTodo)="addTodo($event)"></todo-input>
