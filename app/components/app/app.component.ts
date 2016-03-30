@@ -1,10 +1,11 @@
 import {Component} from 'angular2/core';
+import {Toolbar} from '../toolbar/toolbar.component'
 import {TodoListComponent} from '../todo-list/todo-list.component'
 
 @Component({
     selector: 'app',
-    template: '<h1>Todo</h1><todo-list></todo-list>',
-    directives: [TodoListComponent]
+    template: '<toolbar></toolbar><div class="container"><todo-list></todo-list></div>',
+    directives: [TodoListComponent, Toolbar]
 })
 
 export class AppComponent {
