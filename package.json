@@ -2,14 +2,16 @@
   "name": "angular2-quickstart",
   "version": "1.0.0",
   "scripts": {
-    "start": "npm run scss & concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run scss:w\" ",
-    "scss" : "node-sass --output-style compressed app/components/ -o app/components/",
-    "scss:w" : "node-sass -w --output-style compressed app/components/ -o app/components/",
+    "start": "npm run scss & npm run autoprefixer & concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run scss:w\" \"npm run watch\" ",
+    "build": "npm run scss & npm run autoprefixer & npm run tsc",
+    "scss": "node-sass --output-style compressed app/components/ -o app/components/",
+    "autoprefixer": "postcss -u autoprefixer -r app/components/*/*.css",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server",
     "typings": "typings",
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+    "watch": "npm-watch"
   },
   "license": "ISC",
   "dependencies": {
@@ -21,9 +23,11 @@
     "zone.js": "0.6.6"
   },
   "devDependencies": {
+    "autoprefixer": "^6.3.5",
     "concurrently": "^2.0.0",
     "lite-server": "^2.1.0",
     "node-sass": "^3.4.2",
+    "postcss-cli": "^2.5.1",
     "typescript": "^1.8.9",
     "typings": "^0.7.9"
   }
