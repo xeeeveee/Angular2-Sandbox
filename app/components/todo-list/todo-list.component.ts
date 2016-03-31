@@ -5,6 +5,7 @@ import {TodoInputComponent} from '../todo-input/todo-input.component';
 @Component({
     selector: 'todo-list',
     templateUrl: 'app/components/todo-list/todo-list.html', // TODO: Explore reletive paths - Appears to be some issues with it: https://github.com/angular/angular/issues/2383
+    styleUrls: ['app/components/todo-list/todo-list.css'], // TODO: Explore reletive paths - Appears to be some issues with it: https://github.com/angular/angular/issues/2383
     directives: [TodoInputComponent]
 })
 
