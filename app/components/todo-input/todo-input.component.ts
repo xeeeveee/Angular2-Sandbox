@@ -4,17 +4,15 @@ import {Todo} from '../../models/todo';
 
 @Component({
     selector: 'todo-input',
-    template: '<input [(ngModel)]="title"  (keyup.enter)="addTodo()" placeholder="New Todo">'
-
+    template: '<input [(ngModel)]="text"  (keyup.enter)="addTodo()" placeholder="New Todo">'
 })
 
 export class TodoInputComponent {
     @Output() newTodo = new EventEmitter<Todo>();
 
-    title:string;
+    text:string;
 
     addTodo() {
-        this.newTodo.emit({'text': this.title, 'isDone': false});
-        this.title = '';
+        this.newTodo.emit({'text': this.text, 'isDone': false});
     }
 }
