@@ -38,4 +38,8 @@ export class TodoListComponent {
     get remaining():number {
         return this.todos.reduce((count, todo:Todo) => count + !todo.isDone, 0)
     }
+
+    get total():number {
+        return this.todos.length;
+    }
 }
