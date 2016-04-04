@@ -1,30 +1,28 @@
 import {Component} from 'angular2/core';
 import {Todo} from '../../models/todo';
 import {TodoInputComponent} from '../todo-input/todo-input.component';
+import {TodoStatusPipe} from "../../pipes/todo-status";
+import {TodoService} from "../../services/todo-service";
 
 @Component({
     selector: 'todo-list',
     templateUrl: 'app/components/todo-list/todo-list.html', // TODO: Explore reletive paths - Appears to be some issues with it: https://github.com/angular/angular/issues/2383
     styleUrls: ['app/components/todo-list/todo-list.css'], // TODO: Explore reletive paths - Appears to be some issues with it: https://github.com/angular/angular/issues/2383
-    directives: [TodoInputComponent]
+    directives: [TodoInputComponent],
+    pipes: [TodoStatusPipe]
 })
 
 export class TodoListComponent {
 
-    todos:Todo[];
+    todoService:TodoService;
 
-    constructor() {
-        this.todos = [];
+    constructor(public todoService:TodoService) {
         let first = {text: 'My first todo', isDone: false};
-        this.todos.push(first);
+        this.todoService.add(first)
     }
 
     addTodo(todo:Todo) {
-        this.todos.push(todo);
-    }
-
-    removeTodo(index) {
-        this.todos.splice(index, 1);
+        this.todoService.add(todo);
     }
 
     toggleTodo(todo:Todo) {
@@ -36,10 +34,10 @@ export class TodoListComponent {
     }
 
     get remaining():number {
-        return this.todos.reduce((count, todo:Todo) => count + !todo.isDone, 0)
+        return this.todoService.todos.reduce((count, todo:Todo) => count + !todo.isDone, 0)
     }
 
     get total():number {
-        return this.todos.length;
+        return this.todoService.todos.length;
     }
 }
