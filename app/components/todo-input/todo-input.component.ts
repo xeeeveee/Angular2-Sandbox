@@ -14,5 +14,6 @@ export class TodoInputComponent {
 
     addTodo() {
         this.newTodo.emit({'text': this.text, 'isDone': false});
+        this.text = '';
     }
 }
