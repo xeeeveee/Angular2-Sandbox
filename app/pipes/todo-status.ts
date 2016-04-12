@@ -4,10 +4,14 @@ import {Pipe} from "angular2/core";
     name: "status"
 })
 export class TodoStatusPipe {
-    transform(value) {
-        console.log(value);
+    transform(value, [status]) {
+        console.log(status);
         return value.filter(function(item){
-            return item.isDone;
+            if(status == 'all') {
+                return true;
+            }
+
+            return (item.isDone == status);
         });
     }
 }
