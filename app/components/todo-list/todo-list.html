@@ -1,6 +1,6 @@
 <p>{{remaining}} / {{total}}</p>
 <ul>
-    <li *ngFor="#todo of todoService.todos">
+    <li *ngFor="#todo of todoService.todos | status">
         {{todo.text}}
         <input type="checkbox" [checked]="todo.isDone" (change)="toggleTodo(todo)">
         <button class="tiny alert button" (click)="removeTodo(i)">Remove</button>
