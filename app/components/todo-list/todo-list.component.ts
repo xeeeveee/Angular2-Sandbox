@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 import {Todo} from '../../models/todo';
 import {TodoInputComponent} from '../todo-input/todo-input.component';
 import {TodoStatusPipe} from "../../pipes/todo-status";
@@ -13,6 +13,8 @@ import {TodoService} from "../../services/todo-service";
 })
 
 export class TodoListComponent {
+
+    @Input() status:boolean;
 
     todoService:TodoService;
 
