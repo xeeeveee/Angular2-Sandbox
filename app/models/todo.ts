@@ -1,4 +1,6 @@
-export interface Todo {
-    text : string,
-    isDone : boolean
+export class Todo {
+    constructor(
+        public text:string,
+        public isDone:boolean
+    ) {}
 }
